@@ -1,31 +1,30 @@
 #!/usr/bin/env python3
 import random
-a = 1
-b = 0
-c = 0
-
+range_min = 1
+range_max = 3
 wybor = -1
-losowan = 1000
-wygranych = 0
-wygranych_procent = 0
-bramki = [a, b, c]
 
+nagroda = -1
+losowan = 10000
+wygrane_zmiana = 0 
+wygrane_bez_zmiany = 0
+przegranych = -1
+debug_flag = 0
+zmiana_flag = 1
 
-for i in range(losowan):
-#    print(i)
-    wybor = random.randint(0,2)
-    a = random.randint(0,1)
-    b = random.randint(0,1)
-    c = random.randint(0,1)
-    bramki = [a,b,c]
-    print(bramki)
-    if wybor == bramki[wybor]:
-        wygranych += 1
+for _ in range(losowan):
+    wybor = random.randint(range_min,range_max)
+    nagroda = random.randint(range_min,range_max) 
 
-wygranych_procent = wygranych / losowan
-print("ile bylo wygranych",wygranych)
-print("ile procent wygranych",wygranych_procent)
+    if wybor == nagroda:
+        wygrane_zmiana += 0
+    else:
+        wygrane_zmiana += 1
 
+    if wybor == nagroda:
+        wygrane_bez_zmiany += 1
+    else:
+        wygrane_bez_zmiany += 0
 
-        
-
+print("wygrane gdy zmiana wyboru:",wygrane_zmiana/losowan)
+print("wygrane gdy brak zmiany:",wygrane_bez_zmiany/losowan)
